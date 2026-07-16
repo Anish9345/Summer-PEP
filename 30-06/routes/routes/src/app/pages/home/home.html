@@ -1,0 +1,102 @@
+<!-- <p>home works!</p> -->
+<!-- <div>
+    @for(item of user; track item.id) {
+        <div>
+
+            <p>{{item.name}}</p>
+            <p>{{item.id}}</p>
+            <p>{{item.email}}</p>
+        </div>
+    }
+</div> -->
+
+<!--  -->
+
+<div class="flex flex-wrap gap-5 p-5 font-sans bg-gray-50">
+    
+    @for(item of user; track item.id) {
+        <!-- Individual Card -->
+        <div [routerLink]="['/home/user', item.id]" class="w-75 max-w-full bg-white border border-gray-200 rounded-xl p-5 shadow-[0_4px_6px_rgba(0,0,0,0.05)] cursor-pointer">
+            
+            <!-- Card Header (Name and ID) -->
+            <div class="flex justify-between items-center mb-3 pb-3 border-b border-gray-100">
+                <p class="m-0 text-xl font-semibold text-gray-900">
+                    {{item.name}}
+                </p>
+                <p class="m-0 text-xs font-semibold text-indigo-700 bg-indigo-100 px-2.5 py-1 rounded-full">
+                    #{{item.id}}
+                </p>
+            </div>
+            
+            <!-- Card Body (Email) -->
+            <p class="m-0 text-[0.95rem] text-gray-600 flex items-center gap-2">
+                <span class="text-[1.1rem]">✉️</span> {{item.email}}
+            </p>
+            
+        </div>
+    }
+
+</div>
+
+<!--  -->
+
+<!-- 
+Life Cycle Method
+
+ngOnInit - [] - run single time after the component get loaded -  uses -  
+-->
+
+
+<!--  -->
+<button (click)="updateText()">Update child data</button>
+<app-about [parentData]="textVal()"></app-about>
+
+
+<app-button
+[buttonText]="'Button From Parent'"
+(buttonFn)="buttonFn()"
+[buttonSize]="buttonConfig.sizes.SM"
+[buttonType]="buttonConfig.types.PRIMARY"
+></app-button>
+
+<app-button
+[buttonText]="'Medium Button'"
+(buttonFn)="buttonFn()"
+[buttonSize]="buttonConfig.sizes.MD"
+[buttonType]="buttonConfig.types.SUCCESS"
+></app-button>
+
+<app-button
+[buttonText]="'Large Button'"
+(buttonFn)="buttonFn()"
+[buttonSize]="buttonConfig.sizes.LG"
+[buttonType]="buttonConfig.types.WARNING"
+></app-button>
+
+<app-button
+[buttonText]="'Extra Large Button'"
+(buttonFn)="buttonFn()"
+[buttonSize]="buttonConfig.sizes.XL"
+[buttonType]="buttonConfig.types.DANGER"
+></app-button>
+
+<app-button
+[buttonText]="'SUCCESS'"
+(buttonFn)="buttonFn()"
+[buttonSize]="buttonConfig.sizes.SM"
+[buttonType]="buttonConfig.types.SUCCESS"
+></app-button>
+
+<!--  -->
+
+<!-- <p>{{authService.userName()}}</p> -->
+
+
+<!--  -->
+
+<app-button
+[buttonText]="'Log Out'"
+(buttonFn)="logout()"
+[buttonSize]="buttonConfig.sizes.SM"
+[buttonType]="buttonConfig.types.SUCCESS"
+></app-button>

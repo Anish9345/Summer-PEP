@@ -1,0 +1,17 @@
+<p>login works!</p>
+
+<div class="flex flex-wrap flex-col justify-center items-center">
+  <h1 class="text-4xl font-bold text-sky-500">Login</h1>
+  <input [value]="username" (input)="username = $event.target.value" placeholder="Please enter Username" class="p-6 m-2 bg-gray-300 max-w-3xl min-w-xl rounded-xl"/>
+  <input type="password" [value]="userpass" (input)="userpass = $event.target.value" placeholder="Please enter Password" class="p-6 m-2 bg-gray-300 max-w-3xl min-w-xl rounded-xl" />
+  <app-button
+    [buttonText]="'Log In '"
+    (buttonFn)="login()"
+    [buttonSize]="buttonConfig.sizes.XL"
+    [buttonType]="buttonConfig.types.PRIMARY"
+    [isButtonDisabled]="username.trim().length < 3 && userpass.trim().length < 3"     
+  ></app-button>
+
+
+</div>
+    <!-- (buttonFn)="userLogIn()" -->

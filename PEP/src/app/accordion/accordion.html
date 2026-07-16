@@ -1,0 +1,39 @@
+<p>accordion works!</p>
+
+
+<div class="">
+    @for(i of accordionData; track $index){                <!--//// @if - new modele , **if -old --> <!--@ is to use for loop in HTML-->
+        <div class="border-solid p-5 m-5 border-2 border-greay-300 rounded-lg">
+            <h2>{{i.title}}</h2>
+            @if(i.isopen === true){
+                <p>{{i.content}}</p>
+            }
+<!--  -->
+            <div class="container">
+  <a href="#" class="button type--C">
+    <div class="button__line"></div>
+    <div class="button__line"></div>
+    <span class="button__text" (click)="toggleAccordion($index)" class="cursor-pointer">{{i.isopen ? "Close" : "Open"}}>ENTRY</span>
+    <button (click)="toggleAccordion($index)" class="cursor-pointer">{{i.isopen ? "Close" : "Open"}}</button>
+    <div class="button__drow1"></div>
+    <div class="button__drow2"></div>
+  </a>
+</div>
+            <!--  -->
+      <!-- <button (click)="toggleAccordion($index)" class="cursor-pointer">{{i.isopen ? "Close" : "Open"}}</button> -->
+        </div>
+    }
+</div>
+
+<!--  -->
+
+
+<div class="container">
+  <a href="#" class="button type--C">
+    <div class="button__line"></div>
+    <div class="button__line"></div>
+    <span class="button__text">ENTRY</span>
+    <div class="button__drow1"></div>
+    <div class="button__drow2"></div>
+  </a>
+</div>

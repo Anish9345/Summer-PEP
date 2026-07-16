@@ -1,0 +1,111 @@
+<!-- this is the parent  -->
+
+<h1 class="text-4xl p-20">Hello class</h1>
+
+<!-- <app-card></app-card> -->  <!-- calls card component -->
+
+ <!-- /* -->
+<!-- <div class="flex flex-wrap"> -->
+  
+  <!-- @for(i of arr; track $index){ -->
+    <!-- <app-card [data]="i" [parentObj]="obj"></app-card> -->
+    <!-- <app-card [data]="i"  ></app-card> -->
+  <!-- } -->
+
+<!-- </div> -->
+<!-- */  -->
+
+<!-- signal -->
+
+<!-- <p>{{name()}}</p>    we use this - ()  to call signal -->
+
+
+
+<!-- <p>{{st()}}</p>
+<p>{{nu()}}</p>
+<p>{{bo()}}</p> -->
+
+<!--  -->
+
+ <!-- <app-card [parentData]="title()"></app-card> -->
+<!-- <div class="flex flex-wrap"> -->
+  
+  <!-- @for(i of arr2; track $index){ -->
+    <!-- <app-card [data]="i" [parentObj]="obj"></app-card> -->
+    <!-- <app-card [arrFromParent]="arraySignal" ></app-card> -->
+  <!-- } -->
+
+<!-- </div> -->
+
+<!-- // HW make your simple portfoilio -->
+ <!-- next topic Routes -->
+
+
+ <!--  -->
+ <!-- <app-about [patentData1]="title()"></app-about> -->
+ 
+ <nav class="flex gap-2 text-4xl p-2">
+   <a routerLink="child" >Child</a>
+   <button routerLink="about" >About</button>
+   <button routerLink="contact" >Contact</button>
+  </nav>
+
+  <p>{{title1()}}</p>
+  <!-- <p>{{title2()}}</p> -->
+
+
+  <app-card (sendData)="receiveData($event)" ></app-card>  
+
+  <!-- <app-card (sendData1)="receiveData1($event)"></app-card> -->
+  
+  <router-outlet></router-outlet>   <!-- //route all components -->
+  
+  <!-- now we will share data from child to parent // use output int this like we us input -->
+
+
+
+<!--
+  
+Todo App 
+-add
+-remove/delete 
+-isDone
+
+-->
+   
+<br>
+<br>
+
+<h2><b>To Do</b></h2>
+
+ <input type="text" class="border-2" (input)="onInput($event)" [value]="todoText">
+ <button (click)="addTodo()" class="border-2 cursor-pointer">ADD TODO ✅</button> 
+
+
+ <div>
+
+ @for(item of todoArr(); track $index){
+  <div class="flex flex-wrap gap-6 text-center border-solid m-2 p-2 justify-around cursor-pointer">
+    @if(item.isDone){
+      <p class="line-through text-red-500 text-4xl p-2">{{item.text}}</p>
+      <!-- <button (click)="item.text=''" class="border-2 cursor-pointer bg-red-500">❌Remove</button>  -->
+    }@else{
+      <p class="text-4xl p-2">{{item.text}}</p>
+      <!-- <button (click)="item.isDone=true" class="border-2 cursor-pointer bg-green-500">Done</button> -->
+    }
+
+
+    <button>❌</button>
+  </div>
+ }
+
+ </div>
+
+ <!-- item.text=' ' ,
+ HW
+ deleted todo
+ toggle todo
+ -->
+
+
+ <!-- dinamic rout  -->

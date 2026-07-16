@@ -1,0 +1,154 @@
+<!-- <p>formpage works!</p> -->
+
+<!-- <div>
+    <form [formGroup]="reactiveForm">
+        Name input field
+        <div>
+            <input type="text" formControlName="name" placeholder="Enter your Name" />
+
+            @if(inValid('name')){
+                @if(f['name']?.errors?.['required']){
+                    <p class="text-red-500 text-sm mt-1">Name is required</p>
+                }
+
+                @if(f['name']?.errors?.['minlength']){
+                    <p class="text-red-500 text-sm mt-1">Name must be at least 3 characters long</p>
+                }
+            }
+        </div>
+        Email input field
+         <div>
+            <input type="email" formControlName="email" placeholder="Enter your Email" />
+        </div>
+        Phone input field
+         <div>
+            <input type="number" formControlName="phone" placeholder="Enter your Phone Number" />
+        </div>
+    </form>
+</div> -->
+
+
+<!--  -->
+
+<div class="max-w-md mx-auto mt-10 p-8 bg-white border border-gray-100 rounded-xl shadow-lg">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Contact Us</h2>
+
+    <form [formGroup]="reactiveForm" class="flex flex-col space-y-5">
+        
+        <div class="flex flex-col">
+            <label for="name" class="mb-1 text-sm font-semibold text-gray-700">Name</label>
+            <input 
+                id="name"
+                type="text" 
+                formControlName="name" 
+                placeholder="Enter your Name" 
+                class="px-4 py-2.5 bg-gray-50 border rounded-lg text-gray-900 focus:outline-none focus:ring-2 transition-all duration-200"
+                [class.border-red-500]="inValid('name')"
+                [class.focus:ring-red-500]="inValid('name')"
+                [class.border-gray-300]="!inValid('name')"
+                [class.focus:ring-blue-500]="!inValid('name')"
+            />
+            
+            @if(inValid('name')) {
+                <div class="mt-1.5 flex flex-col space-y-1">
+                    @if(f['name']?.errors?.['required']) {
+                        <p class="text-red-500 text-xs flex items-center font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Name is Required
+                        </p>
+                    }
+                    
+                    @if(f['name']?.errors?.['minlength']) {
+                        <p class="text-red-500 text-xs flex items-center font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Name must be at least 3 characters long
+                        </p>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="flex flex-col">
+            <label for="email" class="mb-1 text-sm font-semibold text-gray-700">Email</label>
+            <input 
+                id="email"
+                type="email" 
+                formControlName="email" 
+                placeholder="Enter your Email" 
+                class="px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+            />
+
+            @if(inValid('email')) {
+                <div class="mt-1.5 flex flex-col space-y-1">
+                    @if(f['email']?.errors?.['required']) {
+                        <p class="text-red-500 text-xs flex items-center font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Email is Required
+                        </p>
+                    }
+                    
+                    @if(f['email']?.errors?.['email']) {
+                        <p class="text-red-500 text-xs flex items-center font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Email should end with @gmail.com
+                        </p>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="flex flex-col">
+            <label for="phone" class="mb-1 text-sm font-semibold text-gray-700">Phone Number</label>
+            <input 
+                id="phone"
+                type="number" 
+                formControlName="phone" 
+                placeholder="Enter your Phone Number" 
+                class="px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+            />
+
+            @if(inValid('phone')) {
+                <div class="mt-1.5 flex flex-col space-y-1">
+                    @if(f['phone']?.errors?.['required']) {
+                        <p class="text-red-500 text-xs flex items-center font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Phone Number is Required
+                        </p>
+                    }
+                    
+                    @if(f['phone']?.errors?.['pattern']) {
+                        <p class="text-red-500 text-xs flex items-center font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Phone number must start with 6 or 9 and it should have 10 digits
+                        </p>
+                    }
+                </div>
+            }
+        </div>
+
+        <div>
+            <input type="file" 
+                accept="image/*"
+                (change)="onFileSelect($event)"
+            class="px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+            />
+
+            @if(imagePreview()){
+                <img [src]="imagePreview()" alt="preview" />
+            }
+        </div>
+
+        <button 
+            type="submit" 
+            [disabled]="reactiveForm.invalid"
+            class="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+            Submit
+        </button>
+    </form>
+</div>
+
+<!--  -->
+
+<!-- <div>
+    
+</div> -->

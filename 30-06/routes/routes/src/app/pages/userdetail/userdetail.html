@@ -1,0 +1,63 @@
+<p>userdetail works!</p>
+
+<!-- @if(userData() == null){
+    <p>User not found Or data Loading</p>
+}@else{
+    <p>User Details:</p>
+    <ul>
+        <li>ID: {{ userData()?.id}}</li>
+        <li>Name: {{ userData()?.name}}</li>
+        <li>Email: {{ userData()?.email}}</li>
+    </ul>
+} -->
+
+<!-- styling -->
+
+<div class="max-w-md mx-auto mt-8 font-sans">
+    @if(userData() == null) {
+        <!-- Error / Loading State (Transparent Red) -->
+        <div class="bg-red-500/10 border border-red-200 rounded-xl p-8 text-center shadow-sm">
+            <p class="m-0 text-red-600 text-sm font-medium animate-pulse">
+                User not found or data loading...
+            </p>
+        </div>
+    } @else {
+        <!-- User Details Card -->
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+            
+            <!-- Header -->
+            <div class="bg-gray-50 px-5 py-4 border-b border-gray-200">
+                <p class="m-0 text-lg font-semibold text-gray-900">User Details</p>
+            </div>
+            
+            <!-- Details List -->
+            <ul class="m-0 p-0 list-none">
+                <li class="flex justify-between items-center px-5 py-3 border-b border-gray-100">
+                    <span class="text-sm text-gray-500 font-medium">ID</span>
+                    <span class="text-sm font-semibold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full">
+                        #{{ userData()?.id }}
+                    </span>
+                </li>
+                
+                <li class="flex justify-between items-center px-5 py-3 border-b border-gray-100">
+                    <span class="text-sm text-gray-500 font-medium">Name</span>
+                    <span class="text-sm font-medium text-gray-900">
+                        {{ userData()?.name }}
+                    </span>
+                </li>
+                
+                <li class="flex justify-between items-center px-5 py-3">
+                    <span class="text-sm text-gray-500 font-medium">Email</span>
+                    <span class="text-sm font-medium text-gray-900 flex items-center gap-2">
+                        <span class="text-lg">✉️</span> {{ userData()?.email }}
+                    </span>
+                </li>
+            </ul>
+            
+        </div>
+    }
+</div>
+
+
+<!--  -->
+

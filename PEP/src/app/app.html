@@ -1,0 +1,39 @@
+<h1 >hello</h1>
+<p class="underline font-bold">The quick brown fox ...</p>
+
+<div class="underline font-bold">{{name}}</div>             <!-- access from app.ts       -  to access use double {{variable name}}   - this is called variable binding-->
+
+
+<!-- event Binding -->
+<h1>{{count}}</h1>
+
+<button  (click)="incrementVal()" style="background-color:red;">Increment</button>
+<button  (click)="decrementVal()" style="background-color:blue; ">Decrement</button>
+
+
+<!-- crousel -  slide window like multiple image in instagram we have to slide to see next image -->
+
+<!-- <img [src]="imageArr[count]" alt="Brokeimage"  style="height: 400px; width:400px;" /> -->
+<img [src]="imageArr[count]" alt="Brokeimage"  class="h-[400px] w-[400px] bg-center" />
+
+
+<!-- take 10 image do styleing with crousel   HW -->
+
+
+<!-- next class Two way binding -->
+
+
+
+<app-accordion></app-accordion>
+
+<!--  -->
+
+<div class="container">
+  <a href="#" class="button type--C">
+    <div class="button__line"></div>
+    <div class="button__line"></div>
+    <span class="button__text">ENTRY</span>
+    <div class="button__drow1"></div>
+    <div class="button__drow2"></div>
+  </a>
+</div>
