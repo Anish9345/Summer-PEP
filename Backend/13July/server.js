@@ -9,6 +9,9 @@ const authRouter = require("./router/auth.route");
 const errorHandler = require("./middleware/error.middleware");
 const userRouter = require("./router/user.route");
 const authMiddleware = require("./middleware/auth.middleware");
+const { connect } = require("http2");
+
+const connectDb = require("./DB/mongo.db");
 
 
 app.use(express.json());
@@ -36,9 +39,20 @@ app.use("/user", authMiddleware, userRouter);
 
 app.use(errorHandler);
 
-app.listen(process.env.PORT || 5000, () => {
-    console.log(`PORT STARTED ON ${process.env.PORT || 5000}`)
+connectDb()
+    .then(() => {
+        console.log("DB Connected")
+    })
+    .then(() => {
+
+        app.listen(process.env.PORT || 5000, () => {
+            console.log(`PORT STARTED ON ${process.env.PORT || 5000}`)
+    })
 })
+    .catch((err) => {
+        console.log(err);
+    })
+
 
 
 // JWT
