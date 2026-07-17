@@ -35,7 +35,7 @@ app.use(express.json());
 
 
 app.use("/auth/", authRouter);                // parent route
-app.use("/user", authMiddleware, userRouter);
+app.use("/user/", authMiddleware, userRouter);
 
 app.use(errorHandler);
 
