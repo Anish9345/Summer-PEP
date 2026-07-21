@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       require: true,
     },
+    password: {
+      type: String,
+      require: true,
+    }
   },
   {
     collation: "users",

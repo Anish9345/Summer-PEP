@@ -1,10 +1,14 @@
 const arr = require("../storage/storage");
 const { statusCodes, errMessage } = require("../utils/utils");
 const jwt = require("jsonwebtoken");
+const User = require("../model/user.schema")
+const bcrypt = require('bcrypt');
 
 const authLogin = (req, res, next) => {
   
+  
   try {
+    
     const { username, password } = req.body;
 
     const isUserValid = arr.find(
@@ -45,10 +49,43 @@ const authLogin = (req, res, next) => {
   }
 };
 
-const authSignUp = (req, res, next) => {
+const authSignUp = async (req, res, next) => {
   try {
+
+console.log(arr);
+  
+    let {name, email, mobil, age, city, isActive, password} = req.body;
+
+    console.log(req.body);
+
+    const existingUser = await User.findOne({ email });
+    if(existingUser){
+      // throw new Error("User alredy exists"); // custom Error Check --
+      return res.status(409).json({
+        status: "ERROR",
+        message: "User already exists",
+      })
+    }
+  
+    const username = name;
+    // const password = email;
+
+    const hashpass = await bcrypt.hash(password, 10);
+    password = hashpass
+
+    User.create({
+      name,
+      email,
+      mobil,
+      age,
+      city,
+      isActive,
+      password,
+    })
+
+
     // console.log(arr);
-    const { username, password } = req.body; // destructring - fetching data from body and making as variable
+    // const { username, password } = req.body; // destructring - fetching data from body and making as variable
     // console.log(username, password);
     const obj = {
       id: Date.now(),
